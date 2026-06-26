@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI-Based Personalized Recommendation System</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/dashboard.css" />
+    <link rel="stylesheet" href="/static/css/history.css" />
+    <link rel="stylesheet" href="/static/css/favorites.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar-panel">
+        <div class="brand-card">
+          <img src="/static/images/logo.png" alt="AI Logo" />
+          <div>
+            <h1>AI-Recommend</h1>
+            <p>Personalized recommendations with Explainable AI.</p>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/recommend" class="nav-link">Recommendations</a>
+          <a href="/history" class="nav-link">Search History</a>
+          <a href="/favorites" class="nav-link">Favorites</a>
+          <a href="/dashboard" class="nav-link">Dashboard</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="topbar-left">
+            <div class="page-identity">
+              <h2>AI-Based Personalized Recommendation System</h2>
+              <span>Dark glassmorphism experience for modern recommendations.</span>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <form id="search-form" class="search-form" action="/recommend" method="GET">
+              <div class="search-wrapper">
+                <input id="query" name="q" type="search" autocomplete="off" placeholder="Search movies, genres, languages..." />
+                <div id="suggestions" class="search-suggestions"></div>
+              </div>
+              <select id="category" name="category">
+                {% for category in categories %}
+                  <option value="{{ category|lower }}">{{ category }}</option>
+                {% endfor %}
+              </select>
+              <button class="btn btn-primary" type="submit">Get Recommendations</button>
+            </form>
+          </div>
+        </header>
+
+        <section class="page-body">
+          {% block content %}{% endblock %}
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/history.js"></script>
+    <script src="/static/js/favorites.js"></script>
+  </body>
+</html>

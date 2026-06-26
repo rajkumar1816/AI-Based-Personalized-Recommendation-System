@@ -1,0 +1,3 @@
+/* History page styles */
+.history-list{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px}
+.history-item{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid rgba(255,255,255,0.02)}

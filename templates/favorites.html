@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <section class="favorites-panel glass-card">
+    <div class="section-header">
+      <h2>Saved Favorites</h2>
+      <p>All of your saved movie recommendations appear here for easy review.</p>
+    </div>
+    <div class="favorites-grid">
+      {% if favorites %}
+        {% for item in favorites %}
+          <div class="card favorite-card">
+            <div class="favorite-header">
+              <div>
+                <h3>{{ item.title }}</h3>
+                <p class="caption">{{ item.genre }}</p>
+              </div>
+              <button class="btn btn-secondary small" onclick="removeFavorite({{ item.id }})">Remove</button>
+            </div>
+            <div class="favorite-meta">Saved on {{ item.saved_date }}</div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="empty-state">
+          <p>No favorites found. Save recommendations to populate this page.</p>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,13 @@
+venv/
+.venv/
+.venv-1/
+
+__pycache__/
+*.pyc
+
+.env
+
+static/images/posters/
+
+poster_map.csv
+dataset/poster_map.csv

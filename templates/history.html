@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <section class="history-panel glass-card">
+    <div class="section-header">
+      <h2>Search History</h2>
+      <div class="history-actions">
+        <button class="btn btn-secondary" onclick="clearHistory()">Clear All</button>
+        <button class="btn btn-primary" onclick="exportHistory()">Export CSV</button>
+      </div>
+    </div>
+    <div class="history-list">
+      {% if history %}
+        {% for item in history %}
+          <div class="history-item">
+            <div>
+              <strong>{{ item.search_query }}</strong>
+              <span class="tag">{{ item.category }}</span>
+              <div class="caption">{{ item.timestamp }}</div>
+            </div>
+            <button class="btn btn-secondary small" onclick="deleteHistory({{ item.id }})">Delete</button>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="empty-state">
+          <p>No search history available yet.</p>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

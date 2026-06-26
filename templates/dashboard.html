@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <section class="dashboard-header glass-card">
+    <div>
+      <h2>Analytics Dashboard</h2>
+      <p>Track user behavior, favorites, and recommendation performance in real time.</p>
+    </div>
+    <div class="dashboard-metrics">
+      <div class="metric-card">
+        <span>Total Searches</span>
+        <strong>{{ totals.total_searches }}</strong>
+      </div>
+      <div class="metric-card">
+        <span>Total Movies</span>
+        <strong>{{ totals.total_recommendations }}</strong>
+      </div>
+      <div class="metric-card">
+        <span>Total Favorites</span>
+        <strong>{{ totals.total_favorites }}</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="dashboard-grid">
+    <div class="glass-card chart-card">
+      <div class="chart-header">
+        <h3>Searches Per Day</h3>
+        <p>Daily search volume captured from user activity.</p>
+      </div>
+      <canvas id="searchesChart"></canvas>
+    </div>
+
+    <div class="glass-card chart-card">
+      <div class="chart-header">
+        <h3>Favorite Genres</h3>
+        <p>What users save most often.</p>
+      </div>
+      <canvas id="genresChart"></canvas>
+    </div>
+
+    <div class="glass-card chart-card">
+      <div class="chart-header">
+        <h3>Activity Overview</h3>
+        <p>Searches, favorites, and movie catalog totals.</p>
+      </div>
+      <canvas id="activityChart"></canvas>
+    </div>
+  </section>
+
+  <section class="dashboard-summary glass-card">
+    <div class="summary-item">
+      <span>Most saved genre</span>
+      <strong>{{ top_genre }}</strong>
+    </div>
+    <div class="summary-item">
+      <span>Most favorited movie</span>
+      <strong>{{ top_movie }}</strong>
+    </div>
+  </section>
+{% endblock %}

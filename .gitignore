@@ -1,0 +1,25 @@
+# Virtual environments
+venv/
+.venv/
+.venv-1/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# IDE
+.vscode/
+.idea/
+
+# Environment files
+.env
+
+# Database
+database/*.db
+
+# Generated movie posters
+static/images/posters/
+
+# OS files
+.DS_Store
+Thumbs.db

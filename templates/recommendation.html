@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <section class="recommendation-section">
+    <div class="section-header">
+      <h2>Search Recommendations</h2>
+      <p>Enter a query using the search bar above and discover personalized content.</p>
+    </div>
+    <div id="results" class="grid">
+      {% if results %}
+        {% for item in results %}
+          <article class="card result-card movie-card">
+            <div class="poster-container">
+              <img class="poster-img" src="{{ item.poster_url }}" alt="{{ item.title|e }} poster">
+              <div class="poster-tag">{{ item.year }} • {{ item.language }}</div>
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <div>
+                  <h3>{{ item.title }}</h3>
+                  <p class="caption">{{ item.genre }}</p>
+                </div>
+                <span class="match-pill">{{ item.match }}% match</span>
+              </div>
+              <p class="movie-synopsis">{{ item.description }}</p>
+              {% if item.explanation %}
+                <ul class="explanation-list">
+                  {% for reason in item.explanation %}
+                    <li>{{ reason }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+              <div class="card-actions">
+                <button class="btn btn-secondary" onclick="saveFavorite('{{ item.title|e }}','{{ item.genre|e }}')">Save Favorite</button>
+                <button class="btn" onclick="showDetails()">View Details</button>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      {% elif query %}
+        <div class="card">No recommendations found for "{{ query }}". Try a different search query.</div>
+      {% else %}
+        <div class="card">Use the search form above to generate recommendations.</div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
